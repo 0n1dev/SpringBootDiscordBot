@@ -4,7 +4,7 @@
 
 - `Language`: Java 11
 - `Framework`: Spring Boot 2.5.1
-- `Dependencies`: JDA 
+- `Dependencies`: JDA, Log4j2
 - `Tool`: Lombok
 - `Builder`: Gradle
 ---
@@ -16,7 +16,7 @@
 
 ## ToDo List
 
-- [ ] Discord Bot Login
+- [x] Discord Bot Login
 - [ ] Discord Event Listener
 - [ ] Discord Command Handler
 

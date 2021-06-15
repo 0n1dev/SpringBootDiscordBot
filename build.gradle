@@ -9,6 +9,10 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 configurations {
+    all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+
     compileOnly {
         extendsFrom annotationProcessor
     }
@@ -16,10 +20,22 @@ configurations {
 
 repositories {
     mavenCentral()
+    maven {
+        name 'm2-dv8tion'
+        url 'https://m2.dv8tion.net/releases'
+    }
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // jda
+    implementation 'net.dv8tion:JDA:4.3.0_277'
+
+    // log4j2
+    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-log4j2'
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

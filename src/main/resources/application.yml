@@ -1,0 +1,5 @@
+jda:
+  token: ${DISCORD_TOKEN}
+
+logging:
+  config: classpath:log4j2.xml
