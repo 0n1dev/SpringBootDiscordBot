@@ -1,5 +1,6 @@
 package kr.korpubg.springbootdiscordbot;
 
+import kr.korpubg.springbootdiscordbot.listeners.MessageListener;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.Permission;
@@ -9,6 +10,7 @@ import net.dv8tion.jda.api.utils.ChunkingFilter;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -25,8 +27,10 @@ public class SpringBootDiscordBotConfig {
     private static final Logger logger = LogManager.getLogger(SpringBootDiscordBotConfig.class);
 
     @Bean
-    JDA jda(@Value("${jda.token}") final String jdaToken) {
+    JDA jda(@Value("${jda.token}") final String jdaToken,
+        @Qualifier("messageListener") final MessageListener messageListener) {
         final JDABuilder builder = JDABuilder.createDefault(jdaToken);
+        builder.addEventListeners(messageListener);
         builder.setActivity(Activity.watching("KorPUBG vBeta"));
         builder.enableIntents(GatewayIntent.GUILD_MEMBERS);
         builder.setMemberCachePolicy(MemberCachePolicy.ALL);

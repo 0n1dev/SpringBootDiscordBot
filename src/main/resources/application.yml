@@ -1,5 +1,8 @@
 jda:
   token: ${DISCORD_TOKEN}
 
+discord:
+  log_channel: ${DISCORD_LOG_CHANNEL}
+
 logging:
   config: classpath:log4j2.xml
